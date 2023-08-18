@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { Todo, fetchTodos } from "./actions";
 import { StoreState } from "./reducers";
+import { useEffect } from "react";
 
 interface AppProps {
   todos: Todo[];
@@ -11,11 +12,9 @@ const App: React.FC<AppProps> = ({ todos, fetchTodos }) => {
   return (
     <div>
       <button onClick={fetchTodos}>Fetch Todos</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      {todos.map((todo) => (
+        <div key={todo.id}>{todo.title}</div>
+      ))}
     </div>
   );
 };
