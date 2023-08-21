@@ -7,11 +7,14 @@ import {
 
 export const todosReducer = (
   state: Todo[] = [],
-  actions: FetchPostsAction | DeleteTodoAction
+  action: FetchPostsAction | DeleteTodoAction
 ) => {
-  switch (actions.type) {
+  switch (action.type) {
     case ActionTypes.fetchTodos:
-      return actions.payload;
+      return action.payload;
+
+      case ActionTypes.deleteTodo:
+        return state.filter((todo:Todo)=>todo.id!==action.payload)
 
     default:
       return state;
